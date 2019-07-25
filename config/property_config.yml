@@ -12,13 +12,10 @@ open_rtb:
     site_id: 13496572
     domain: military.com
     publisher_id: 1047456
-  grade_year_1: '< 2019'
-  grade_year_2: '2019-2023'
-  grade_year_3: '> 2023'
-  current_grade_1: 9-12
-  current_grade_2: 13-16
-  current_grade_3: 16-21
+  grade_years: ['< 2019', '2019-2023', '> 2023']
+  grades: ["",9-12,13-16,16-21]
   state: test
+  age: [13-18]
 sample_assets:
   asset_1: 
     id: 1

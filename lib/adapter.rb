@@ -3,9 +3,25 @@ class Adapter
 
 
 		def call
-			HTTParty.post(url, 
-	    :body => body.to_json,
-	    :headers => header )
+			combinations = age_grade_combinations
+			combinations.each do |combination|
+				# response = HTTParty.post(url, 
+		  #   :body => body(combination[0], combination[1]).to_json,
+		  #   :headers => header )
+				response = File.read('/home/raghav/Desktop/Response.json')
+				push_to_queue(JSON.parse(response))
+			end
+		end
+
+		def push_to_queue(response)
+			puts response
+			id = response['id']
+			bidid = response['bidid']
+			cur = response['cur']
+			seatbid = response['seatbid']
+			puts seatbid
+			rtb_response = RtbResponse.find_or_create_by(main_id: id)
+			rtb_response.update(bidid: bidid, cur: cur, seatbid: seatbid)
 		end
 
 		def url
@@ -16,10 +32,12 @@ class Adapter
 			PROPERTY_CONFIG['open_rtb']
 		end
 
-		def body( data = {}, native = {} )			
+		def body( age, grade, data = {}, native = {} )			
 			native[:id] = open_rtb_config['main']['id']
 			native[:imp] = imp			
 			native[:site] = site_details
+			native[:age] = age
+			native[:grade] = grade
 			native
 		end
 
@@ -60,6 +78,12 @@ class Adapter
 			published[:id] = open_rtb_config['request']['publisher_id']
 			site[:published] = published 
 			site
+		end
+
+		def age_grade_combinations
+			age = open_rtb_config['age']
+			grades = open_rtb_config['grades']
+			age.product(grades)
 		end
 
 	end
