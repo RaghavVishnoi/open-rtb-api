@@ -1,0 +1,1 @@
+PROPERTY_CONFIG = YAML.load_file('config/property_config.yml')

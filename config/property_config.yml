@@ -1,0 +1,49 @@
+open_rtb:
+  url: https://monster-uswest.adnxs.com/openrtb2?member_id=3525
+  content_type: application/json
+  main:
+    id: 10604263318755506401
+    imp_id: 1
+    tag_id: 13496572
+  request:
+    version: 1.0
+    plcmtcnt: 1
+    seq: 0
+    site_id: 13496572
+    domain: military.com
+    publisher_id: 1047456
+  grade_year_1: '< 2019'
+  grade_year_2: '2019-2023'
+  grade_year_3: '> 2023'
+  current_grade_1: 9-12
+  current_grade_2: 13-16
+  current_grade_3: 16-21
+  state: test
+sample_assets:
+  asset_1: 
+    id: 1
+    required: 0
+    title: 
+      len: 100
+  asset_2:  
+    id: 2
+    required: 0
+    img: 
+      type: 3
+  asset_3:
+    id: 3
+    required: 0
+    img: 
+      type: 1
+  asset_4:    
+    id: 4
+    required: 0
+    data:
+      type: 2 
+      len: 300
+  asset_5:
+    id: 5
+    required: 0
+    data: 
+      type: 1
+      len: 30  
